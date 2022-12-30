@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Teuku Rizky Noviandy"
 title_separator          : "-"
-name                     : &name "Your Name"
+name                     : &name "Teuku Rizky Noviandy"
 description              : &description "personal description"
 url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -29,7 +29,7 @@ comments:
   facebook:
     appid                :
     num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
+    colorscheme          : "dark" # "light" (default), 
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
   branch                 : "gh-pages" # "master", "gh-pages"
@@ -81,8 +81,8 @@ analytics:
 # Site Author
 author:
   name             : "Teuku Rizky Noviandy"
-  avatar           : "profile.png"
-  bio              : "I'm a graduate student in artificial intelligence, and i have a passion to learn about data analysis and machine learning"
+  avatar           : "profile.jpg"
+  bio              : "Data Scientist"
   location         : "Banda Aceh, Indonesia"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=noviandy+TR"
@@ -105,7 +105,7 @@ author:
   linkedin         : "teuku-rizky-noviandy-4b609a248/"
   orcid            : "https://orcid.org/0000-0002-5779-2235"
   pinterest        :
-  scopus           : "https://www.scopus.com/authid/detail.uri?authorId=57215579311"
+  soundcloud           : "https://www.scopus.com/authid/detail.uri?authorId=57215579311"
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :

@@ -406,6 +406,7 @@
 }
 .ai-scopus:before {
   content: "\e91e";
+  color:orange;
 }
 .ai-scopus-square:before {
   content: "\e91f";

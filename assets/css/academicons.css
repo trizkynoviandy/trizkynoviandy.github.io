@@ -310,6 +310,7 @@
 }
 .ai-orcid:before {
   content: "\e9d9";
+  color:#a6ce39;
 }
 .ai-orcid-square:before {
   content: "\e9c3";
@@ -364,6 +365,7 @@
 }
 .ai-pubmed:before {
   content: "\e99f";
+  color:#24649D;
 }
 .ai-pubmed-square:before {
   content: "\e97d";

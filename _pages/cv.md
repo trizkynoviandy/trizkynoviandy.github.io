@@ -11,11 +11,13 @@ redirect_from:
 
 Education
 ======
-* S.Kom in Informatics, 2014 - 2019
-* M.Kom in Artificial Intelligence, 2022 - TBD
+* Bachelor's degree in Informatics, 2014 - 2019
+* Master's degree in Artificial Intelligence, 2022 - 2024
 
 Work experience
 ======
+* Researcher (2023 - Now)
+  * Graha Primera Saintifika
 * Research Assistant (2019 - Now)
   * Freelance
 * Data Analyst (2019 - Now)

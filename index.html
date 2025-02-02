@@ -182,6 +182,12 @@
                 <h2 class="text-3xl font-semibold text-center mb-6">Publications</h2>
                 <div id="publications-container" class="space-y-4"></div>
             </section>
+
+            <section id="statistics" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+                <h2 class="text-3xl font-semibold text-center mb-6">Publication Statistics</h2>
+                <div id="statistics-container" class="space-y-4 text-center"></div>
+            </section>
+            
         </main>
     </div>
 
@@ -202,45 +208,62 @@
                         acc[pub.year].push(pub);
                         return acc;
                     }, {});
-
+    
                     Object.keys(grouped).sort((a, b) => b - a).forEach((year, index) => {
                         const section = document.createElement('div');
                         section.className = 'border rounded-lg shadow-md p-4';
-
+    
                         const header = document.createElement('h3');
                         header.className = 'text-2xl font-bold cursor-pointer flex justify-between items-center';
                         header.innerHTML = `${year} <button class="toggle-btn text-blue-500">${index === 0 ? 'Hide' : 'Show'}</button>`;
-
+    
                         const list = document.createElement('ul');
                         list.className = 'space-y-2 mt-4';
                         list.style.display = index === 0 ? 'block' : 'none';
-
+    
                         grouped[year].forEach(pub => {
                             const authors = Array.isArray(pub.authors) ? pub.authors.map(author => 
                                 author === 'Teuku Rizky Noviandy' ? `<strong>${author}</strong>` : author
                             ).join(', ') : 'Unknown Authors';
-
+    
                             const item = document.createElement('li');
                             item.className = 'p-4 bg-gray-200 rounded-lg';
                             item.innerHTML = `${authors}, ${pub.year}. <em>${pub.title}</em>. ${pub.journal}. <a href="${pub.link}" class="text-blue-500" target="_blank">[Link]</a>`;
-
+    
                             list.appendChild(item);
                         });
-
+    
                         header.addEventListener('click', () => {
                             const visible = list.style.display === 'block';
                             list.style.display = visible ? 'none' : 'block';
                             header.querySelector('.toggle-btn').textContent = visible ? 'Show' : 'Hide';
                         });
-
+    
                         section.appendChild(header);
                         section.appendChild(list);
                         container.appendChild(section);
                     });
+    
+                    // 👉 Tambahkan kode statistik di sini
+                    const statsContainer = document.getElementById('statistics-container');
+    
+                    const statsList = document.createElement('ul');
+                    statsList.className = 'list-disc custom-list text-center';
+    
+                    Object.keys(grouped).sort((a, b) => b - a).forEach(year => {
+                        const count = grouped[year].length;
+                        const listItem = document.createElement('li');
+                        listItem.className = 'text-lg';
+                        listItem.innerHTML = `<strong>${year}</strong>: ${count} publication${count > 1 ? 's' : ''}`;
+                        statsList.appendChild(listItem);
+                    });
+    
+                    statsContainer.appendChild(statsList);
                 })
                 .catch(error => {
                     console.error('Error loading publications:', error);
                     document.getElementById('publications-container').innerHTML = '<p class="text-red-500">Error loading publications.</p>';
+                    document.getElementById('statistics-container').innerHTML = '<p class="text-red-500">Error loading statistics.</p>';
                 });
         });
     </script>

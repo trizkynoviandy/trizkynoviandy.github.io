@@ -201,11 +201,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             lucide.createIcons();
     
+            let publicationChart; // Variabel untuk menyimpan instance Chart.js
+    
             fetch('publications.json')
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById('publications-container');
-                    const statsContainer = document.getElementById('statistics-container');
     
                     // Kelompokkan publikasi berdasarkan tahun
                     const grouped = data.reduce((acc, pub) => {
@@ -214,7 +215,7 @@
                         return acc;
                     }, {});
     
-                    // Menampilkan publikasi per tahun
+                    // Tampilkan publikasi per tahun
                     Object.keys(grouped).sort((a, b) => b - a).forEach((year, index) => {
                         const section = document.createElement('div');
                         section.className = 'border rounded-lg shadow-md p-4';
@@ -250,56 +251,51 @@
                         container.appendChild(section);
                     });
     
-                    // Buat statistik publikasi dalam bentuk grafik
+                    // ---- GRAFIK PUBLIKASI ----
                     const years = Object.keys(grouped).sort((a, b) => a - b);
                     const publicationCounts = years.map(year => grouped[year].length);
-
+    
                     const ctx = document.getElementById('publicationChart').getContext('2d');
-                    new Chart(ctx, {
+    
+                    // 🚩 Hancurkan grafik lama jika sudah ada
+                    if (publicationChart) {
+                        publicationChart.destroy();
+                    }
+    
+                    // Buat grafik baru
+                    publicationChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
                             labels: years,
                             datasets: [{
                                 label: 'Publications',
                                 data: publicationCounts,
-                                backgroundColor: 'rgba(54, 162, 235, 0.6)',  // Warna biru transparan
-                                borderColor: 'rgba(54, 162, 235, 1)',        // Warna biru solid
+                                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
                                 borderWidth: 1,
-                                barThickness: 20,                            // Batang lebih tipis
-                                borderRadius: 3                              // Membuat batang lebih membulat
+                                barThickness: 20,
+                                borderRadius: 3
                             }]
                         },
                         options: {
                             responsive: true,
-                            maintainAspectRatio: false,                     // Mengizinkan kontrol manual atas ukuran
+                            maintainAspectRatio: false,
                             scales: {
                                 y: {
                                     beginAtZero: true,
                                     ticks: {
                                         stepSize: 1,
-                                        font: {
-                                            size: 10                        // Ukuran font sumbu Y lebih kecil
-                                        }
+                                        font: { size: 10 }
                                     },
-                                    grid: {
-                                        display: false                      // Menghilangkan garis grid Y
-                                    }
+                                    grid: { display: false }
                                 },
                                 x: {
-                                    ticks: {
-                                        font: {
-                                            size: 10                        // Ukuran font sumbu X lebih kecil
-                                        }
-                                    },
-                                    grid: {
-                                        display: false                      // Menghilangkan garis grid X
-                                    }
+                                    ticks: { font: { size: 10 } },
+                                    grid: { display: false }
                                 }
                             },
                             plugins: {
-                                legend: {
-                                    display: false                          // Sembunyikan legenda
-                                },
+                                legend: { display: false },
                                 tooltip: {
                                     callbacks: {
                                         label: function(context) {
@@ -309,10 +305,7 @@
                                 }
                             },
                             layout: {
-                                padding: {
-                                    top: 5,
-                                    bottom: 5
-                                }
+                                padding: { top: 5, bottom: 5 }
                             }
                         }
                     });
@@ -324,7 +317,7 @@
                     document.getElementById('statistics-container').innerHTML = '<p class="text-red-500">Error loading statistics.</p>';
                 });
         });
-    </script>
+    </script>   
    
 </body>
 </html>

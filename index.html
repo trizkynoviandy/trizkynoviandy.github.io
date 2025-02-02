@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teuku Rizky Noviandy's Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        strong {
+            color: #494E52;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #494E52;
+        }
+        @media (min-width: 768px) {
+            main {
+                margin-left: 25%; /* Adjust according to sidebar width */
+            }
+        }
+        .icon-size {
+            width: 24px;
+            height: 24px;
+        }
+        .custom-list {
+            padding-left: 1.5rem; /* Add left padding to bullet points */
+        }
+        .padded-box {
+            padding: 20px; /* Add padding to box sections */
+        }
+        footer {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            width: calc(100% - 25%);
+            margin-left: auto;
+        }
+        @media (max-width: 768px) {
+            aside {
+                position: relative; /* Remove fixed positioning */
+                width: 100%;         /* Full-width on mobile */
+                margin-bottom: 1rem; /* Add space below the sidebar */
+            }
+            
+            main {
+                margin-left: 0;      /* Remove left margin */
+            }
+            
+            footer {
+                width: 100%;         /* Full-width footer */
+                margin-left: 0;
+            }
+        }
+        #nav-menu li:not(:last-child) {
+            border-right: 1px solid rgba(128, 128, 128, 0.5);
+            padding-right: 10px;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto p-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">My Page</h1>
+        
+            <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none">
+                ☰ <!-- Simple Hamburger Icon -->
+            </button>
+    
+            <ul id="nav-menu" class="hidden md:flex space-x-4 ml-auto">
+                <li><a href="#about" class="hover:text-blue-500">About</a></li>
+                <li><a href="#cv" class="hover:text-blue-500">CV</a></li>
+                <li><a href="#research" class="hover:text-blue-500">Research Interest</a></li>
+                <li><a href="#publications" class="hover:text-blue-500">Publications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <aside class="w-full md:w-1/4 bg-white shadow-md p-6 md:fixed md:h-full md:overflow-y-auto">   
+            <div class="text-center">
+                <img src="images/profile.png" alt="Profile Picture" class="w-32 h-32 rounded-full shadow-lg mx-auto mb-4">
+                <h2 class="text-2xl font-semibold mb-2">Teuku Rizky Noviandy</h2>
+                <p class="italic text-gray-600 pb-4">Lecturer in the Department of Information Systems, Universitas Abulyatama</p>
+                <p>Aceh, Indonesia</p><br>
+                <div class="space-y-4 text-left">
+                    <a href="mailto:email@example.com" class="flex items-center text-blue-500">
+                        <i data-lucide="mail" class="icon-size mr-2"></i>
+                        <span class="hover:underline">Email</span>
+                    </a>
+                    <a href="https://github.com/username" class="flex items-center text-blue-500" target="_blank">
+                        <i data-lucide="github" class="icon-size mr-2"></i>
+                        <span class="hover:underline">GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com/in/username" class="flex items-center text-blue-500" target="_blank">
+                        <i data-lucide="linkedin" class="icon-size mr-2"></i>
+                        <span class="hover:underline">LinkedIn</span>
+                    </a>
+                    <a href="https://www.scopus.com/authid/detail.uri?authorId=00000000000" class="flex items-center text-blue-500" target="_blank">
+                        <i class="ai ai-scopus text-2xl mr-2"></i>
+                        <span class="hover:underline">Scopus</span>
+                    </a>
+                    <a href="https://orcid.org/0000-0000-0000-0000" class="flex items-center text-blue-500" target="_blank">
+                        <i class="ai ai-orcid text-2xl mr-2"></i>
+                        <span class="hover:underline">ORCID</span>
+                    </a>
+                    <a href="https://twitter.com/username" class="flex items-center text-blue-500" target="_blank">
+                        <i data-lucide="twitter" class="icon-size mr-2"></i>
+                        <span class="hover:underline">X (Formerly Twitter)</span>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/username" class="flex items-center text-blue-500" target="_blank">
+                        <i class="ai ai-researchgate text-3xl mr-2"></i>
+                        <span class="hover:underline">ResearchGate</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=xxxxxxxxxxx" class="flex items-center text-blue-500" target="_blank">
+                        <i class="ai ai-google-scholar text-3xl mr-2"></i>
+                        <span class="hover:underline">Google Scholar</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-8 md:ml-1/4">
+            <section id="about" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-semibold text-center mb-6">About Me</h2>
+                    <p class="text-gray-700 text-justify">
+                        I completed my master's degree in Artificial Intelligence at Universitas Syiah Kuala. Currently, I am a lecturer in the Department of Information Systems, Faculty of Engineering, at Universitas Abulyatama, Aceh Besar, Indonesia. My research primarily focuses on the implementation and improvement of QSRR and QSAR models using various machine learning algorithms. In addition to this, I am actively involved in other exciting fields such as deep learning for image recognition and forecasting, molecular docking, chemo-informatics, and econometrics.
+                    </p>
+                </div>
+            </section>
+
+            <section id="cv" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-semibold text-center mb-6">Curriculum Vitae</h2>
+                    <h3 class="text-2xl font-semibold mb-4">Education</h3>
+                    <ul class="list-disc custom-list mb-6">
+                        <li><strong>M.Kom. in Artificial Intelligence</strong> - Universitas Syiah Kuala, 2022-2024</li>
+                        <li><strong>S.Kom. in Informatics</strong> - Universitas Syiah Kuala, 2014-2020</li>
+                    </ul>
+
+                    <h3 class="text-2xl font-semibold mb-4">Work Experience</h3>
+                    <ul class="list-disc custom-list">
+                        <li><strong>Lecturer</strong> - Universitas Abulyatama, 2024 - Now</li>
+                        <li><strong>Associate Researcher</strong> - PT. Graha Primera Saintifika, 2023 - Now</li>
+                        <li><strong>Managing Editor</strong> - PT. Heca Sentra Analitika, 2023 - Now</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="research" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+                <div class="container mx-auto">
+                    <h2 class="text-3xl font-semibold text-center mb-6">Research Interests</h2>
+                    <ul class="list-disc custom-list">
+                        <li>Machine Learning in Drug Discovery</li>
+                        <li>Computer-Aided Diagnosis</li>
+                        <li>Explainable Artificial Intelligence</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="publications" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+                <h2 class="text-3xl font-semibold text-center mb-6">Publications</h2>
+                <div id="publications-container" class="space-y-4"></div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2025 Teuku Rizky Noviandy. All rights reserved.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+           
+            fetch('publications.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('publications-container');
+                    const grouped = data.reduce((acc, pub) => {
+                        acc[pub.year] = acc[pub.year] || [];
+                        acc[pub.year].push(pub);
+                        return acc;
+                    }, {});
+
+                    Object.keys(grouped).sort((a, b) => b - a).forEach((year, index) => {
+                        const section = document.createElement('div');
+                        section.className = 'border rounded-lg shadow-md p-4';
+
+                        const header = document.createElement('h3');
+                        header.className = 'text-2xl font-bold cursor-pointer flex justify-between items-center';
+                        header.innerHTML = `${year} <button class="toggle-btn text-blue-500">${index === 0 ? 'Hide' : 'Show'}</button>`;
+
+                        const list = document.createElement('ul');
+                        list.className = 'space-y-2 mt-4';
+                        list.style.display = index === 0 ? 'block' : 'none';
+
+                        grouped[year].forEach(pub => {
+                            const authors = Array.isArray(pub.authors) ? pub.authors.map(author => 
+                                author === 'Teuku Rizky Noviandy' ? `<strong>${author}</strong>` : author
+                            ).join(', ') : 'Unknown Authors';
+
+                            const item = document.createElement('li');
+                            item.className = 'p-4 bg-gray-200 rounded-lg';
+                            item.innerHTML = `${authors}, ${pub.year}. <em>${pub.title}</em>. ${pub.journal}. <a href="${pub.link}" class="text-blue-500" target="_blank">[Link]</a>`;
+
+                            list.appendChild(item);
+                        });
+
+                        header.addEventListener('click', () => {
+                            const visible = list.style.display === 'block';
+                            list.style.display = visible ? 'none' : 'block';
+                            header.querySelector('.toggle-btn').textContent = visible ? 'Show' : 'Hide';
+                        });
+
+                        section.appendChild(header);
+                        section.appendChild(list);
+                        container.appendChild(section);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading publications:', error);
+                    document.getElementById('publications-container').innerHTML = '<p class="text-red-500">Error loading publications.</p>';
+                });
+        });
+    </script>
+</body>
+</html>

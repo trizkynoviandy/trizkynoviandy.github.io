@@ -181,7 +181,7 @@
 
             <section id="statistics" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <h2 class="text-1xl font-semibold text-center mb-6">Publication Statistics</h2>
-                <canvas id="publicationChart" width="400" height="100"></canvas>
+                <canvas id="publicationChart" width="400" height="50"></canvas>
             </section>   
 
             <section id="publications" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
@@ -198,23 +198,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
     
-            fetch('publications.json')
-                .then(response => response.json())
-                .then(data => {
+            const years = [2019, 2025]; // Add more years as needed
+            const fetchPromises = years.map(year => fetch(`publications/${year}_publications.json`).then(res => res.json()));
+    
+            Promise.all(fetchPromises)
+                .then(yearlyData => {
+                    const data = yearlyData.flat(); // Merge data from all years
+    
                     const container = document.getElementById('publications-container');
                     const statsContainer = document.getElementById('statistics-container');
     
-                    // Kelompokkan publikasi berdasarkan tahun
+                    // Group publications by year
                     const grouped = data.reduce((acc, pub) => {
                         acc[pub.year] = acc[pub.year] || [];
                         acc[pub.year].push(pub);
                         return acc;
                     }, {});
     
-                    // Menampilkan publikasi per tahun
+                    // Display publications by year
                     Object.keys(grouped).sort((a, b) => b - a).forEach((year, index) => {
                         const section = document.createElement('div');
                         section.className = 'border rounded-lg shadow-md p-4';
@@ -250,22 +254,22 @@
                         container.appendChild(section);
                     });
     
-                    // Buat statistik publikasi dalam bentuk grafik
-                    const years = Object.keys(grouped).sort((a, b) => a - b);
-                    const publicationCounts = years.map(year => grouped[year].length);
+                    // Create publication statistics chart
+                    const chartYears = Object.keys(grouped).sort((a, b) => a - b);
+                    const publicationCounts = chartYears.map(year => grouped[year].length);
     
                     const ctx = document.getElementById('publicationChart').getContext('2d');
                     new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: years,
+                            labels: chartYears,
                             datasets: [{
                                 label: 'Number of Publications',
                                 data: publicationCounts,
-                                backgroundColor: 'rgba(54, 162, 235, 0.6)',  // Warna biru transparan
-                                borderColor: 'rgba(54, 162, 235, 1)',        // Warna biru solid
+                                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
                                 borderWidth: 1,
-                                borderRadius: 5                              // Membuat bar lebih membulat
+                                borderRadius: 5
                             }]
                         },
                         options: {
@@ -284,7 +288,7 @@
                                 },
                                 tooltip: {
                                     callbacks: {
-                                        label: function(context) {
+                                        label: function (context) {
                                             return `${context.raw} publication${context.raw > 1 ? 's' : ''}`;
                                         }
                                     }

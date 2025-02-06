@@ -1,9 +1,41 @@
 [
   {
-    "authors": ["Rinaldi Idroes", "Teuku Rizky Noviandy", "Aga Maulana", "Rivansyah Suhendra", "Novi Reandy Sasmita", "Muslem Muslem", "Ghazi Mauer Idroes", "Irvanizam Irvanizam"],
+    "authors": ["Khairan Khairan", "Rinaldi Idroes", "SG Tumilaar", "TE Tallei", "Ghazi Mauer Idroes", "F Rahmadhany", "MU Futri", "NM Dinura", "S Mauliza", "M Diana", "CP Maisarah", "A Maulana", "TR Noviandy", "R Suhendra", "N Earlia"],
     "year": "2021",
-    "title": "Retention Index Prediction of Flavor and Fragrance by Multiple Linear Regression and the Genetic Algorithm",
+    "title": "Molecular Docking Study of Fatty Acids from Pliek U Oil in the Inhibition of SARS-CoV-2 Protein and Enzymes",
+    "journal": "IOP Conference Series: Materials Science and Engineering",
+    "link": "https://iopscience.iop.org/article/10.1088/1757-899X/1087/1/012058/meta"
+  },
+
+  {
+    "authors": ["Marwan Marwan", "Teuku Rizky Noviandy", "Aga Maulana", "Rivansyah Suhendra", "Muhammad Yusuf", "Andi Lala", "Ghazi Mauer Idroes", "Muslem Muslem", "Mahmudi Mahmudi", "Rinaldi Idroes"],
+    "year": "2021",
+    "title": "Utilization of Unmanned Aerial Vehicles in Geothermal Exploration: A Review",
+    "journal": "IOP Conference Series: Materials Science and Engineering",
+    "link": "https://iopscience.iop.org/article/10.1088/1757-899X/1087/1/012072/meta"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Aga Maulana", "Novi Reandy Sasmita", "Rivansyah Suhendra", "Ghazi Mauer Idroes", "Maria Paristiowati", "Zuchra Helwani", "Erkata Yandri", "Souvia Rahimah", "Rinaldi Idroes"],
+    "year": "2021",
+    "title": "The Implementation of K-Means Clustering in Kovats Retention Index on Gas Chromatography",
+    "journal": "IOP Conference Series: Materials Science and Engineering",
+    "link": "https://iopscience.iop.org/article/10.1088/1757-899X/1087/1/012051/meta"
+  },
+
+  {
+    "authors": ["Rinaldi Idroes", "Maria Paristiowati", "Ghazi Mauer Idroes", "Rivansyah Suhendra", "Aga Maulana", "Teuku Rizky Noviandy"],
+    "year": "2021",
+    "title": "The Influence of Temperatures, Polarity, Modifier and Pressure to Retention Index in Supercritical Fluid Chromatography: A Review",
+    "journal": "IOP Conference Series: Materials Science and Engineering",
+    "link": "https://iopscience.iop.org/article/10.1088/1757-899X/1087/1/012068/meta"
+  },
+
+  {
+    "authors": ["Rinaldi Idroes", "Teuku Rizky Noviandy", "Aga Maulana", "Rivansyah Suhendra", "Novi Reandy Sasmita", "Muslem Muslem", "Ghazi Mauer Idroes", "Pati Kemala", "Irvanizam Irvanizam"],
+    "year": "2021",
+    "title": "Application of Genetic Algorithm-Multiple Linear Regression and Artificial Neural Network Determinations for Prediction of Kovats Retention Index",
     "journal": "International Review on Modelling and Simulations",
-    "link": "https://www.praiseworthyprize.org/jsm/index.php?journal=iremos&page=article&op=view&path[]=24321"
+    "link": "https://www.praiseworthyprize.org/jsm/index.php?journal=iremos&page=article&op=view&path%5B%5D=25527"
   }
 ]

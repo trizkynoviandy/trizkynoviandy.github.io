@@ -1,9 +1,25 @@
 [
   {
-    "authors": ["Rinaldi Idroes", "Teuku Rizky Noviandy", "Aga Maulana", "Rivansyah Suhendra", "Novi Reandy Sasmita", "Muslem Muslem", "Ghazi Mauer Idroes", "Irvanizam Irvanizam"],
+    "authors": ["Mariza Agustia", "Teuku Rizky Noviandy", "Aga Maulana", "Rivansyah Suhendra", "Muslem Muslem", "Novi Reandy Sasmita", "Ghazi Mauer Idroes", "Souvia Rahimah", "Razief Perucha Fauzie Afidh", "Muhammad Subianto", "Irvanizam Irvanizam", "Rinaldi Idroes"],
     "year": "2022",
-    "title": "Retention Index Prediction of Flavor and Fragrance by Multiple Linear Regression and the Genetic Algorithm",
-    "journal": "International Review on Modelling and Simulations",
-    "link": "https://www.praiseworthyprize.org/jsm/index.php?journal=iremos&page=article&op=view&path[]=24321"
+    "title": "Application of Fuzzy Support Vector Regression to Predict the Kovats Retention Indices of Flavors and Fragrances",
+    "journal": "2022 International Conference on Electrical Engineering and Informatics (ICELTICs)",
+    "link": "https://ieeexplore.ieee.org/abstract/document/9932124/"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Aga Maulana", "Novi Reandy Sasmita", "Rivansyah Suhendra", "Irvanizam Irvanizam", "Muslem Muslem", "Ghazi Mauer Idroes", "Muhammad Yusuf", "Hizir Sofyan", "Taufik Fuadi Abidin", "Rinaldi Idroes"],
+    "year": "2022",
+    "title": "The Prediction of Kovats Retention Indices of Essential Oils at Gas Chromatography Using Genetic Algorithm-Multiple Linear Regression and Support Vector Regression",
+    "journal": "Journal of Engineering Science and Technology",
+    "link": "https://jestec.taylors.edu.my/Vol%2017%20Issue%201%20February%20%202022/17_1_23.pdf"
+  },
+
+  {
+    "authors": ["Lestyo Wulandari", "Rinaldi Idroes", "Teuku Rizky Noviandy", "Gunawan Indrayanto"],
+    "year": "2022",
+    "title": "Application of Chemometrics Using Direct Spectroscopic Methods as a Qc Tool in Pharmaceutical Industry and Their Validation",
+    "journal": "Profiles of Drug Substances, Excipients and Related Methodology",
+    "link": "https://www.sciencedirect.com/science/article/pii/S1871512521000182"
   }
 ]

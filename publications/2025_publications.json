@@ -1,6 +1,30 @@
 [
 
   {
+    "authors": ["Teuku Rizky Noviandy, Ghazi Mauer Idroes, Teuku Zulfikar, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Explainable Deep Learning with Lightweight CNNs for Tuberculosis Classification",
+    "journal": "Infolitika Journal of Data Science",
+    "link": "https://doi.org/10.60084/ijds.v3i1.305"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy, Ghalieb Mutig Idroes, Irsan Hardi, Edi Saputra Ringga, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "An Explainable Machine Learning Study of Behavioral and Psychological Determinants of Depression in the Academic Environment",
+    "journal": "Journal of Educational Management and Learning",
+    "link": "https://doi.org/10.60084/jeml.v3i1.304"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy, Ghifari Maulana Idroes, Essy Harnelly, Irma Sari, Fazlin Mohd Fauzi, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Predicting AXL Tyrosine Kinase Inhibitor Potency Using Machine Learning with Interpretable Insights for Cancer Drug Discovery",
+    "journal": "Heca Journal of Applied Sciences",
+    "link": "https://doi.org/10.60084/hjas.v3i1.270"
+  },
+
+  {
     "authors": ["Teuku Rizky Noviandy", "Eva Imelda", "Ghazi Mauer Idroes", "Rivansyah Suhendra", "Rinaldi Idroes"],
     "year": "2025",
     "title": "Evaluation of Machine Learning Methods for Identifying Carbonic Anhydrase-II Inhibitors as Drug Candidates for Glaucoma",

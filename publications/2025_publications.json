@@ -1,7 +1,47 @@
 [
 
   {
-    "authors": ["Teuku Rizky Noviandy, Ghazi Mauer Idroes, Teuku Zulfikar, Rinaldi Idroes"],
+    "authors": ["Irsan Hardi, Robert Kurniawan, Samrat Ray, Ghalieb Mutig Idroes", "Teuku Rizky Noviandy", "M Shabri Abd Majid"],
+    "year": "2025",
+    "title": "Reducing the Poverty Gap and Severity in Indonesia: The Role of Renewable Energy Access and Consumption",
+    "journal": "Human Settlements and Sustainability",
+    "link": "https://doi.org/10.1016/j.hssust.2025.06.001"
+  },
+
+  {
+    "authors": ["Muksalmina Muksalmina, Ahmad Syahyana, Ferdy Hidayatullah, Ghalieb Mutig Idroes", "Teuku Rizky Noviandy"],
+    "year": "2025",
+    "title": "Credit Card Fraud Detection Through Explainable Artificial Intelligence for Managerial Oversight",
+    "journal": "Indatu Journal of Management and Accounting",
+    "link": "https://doi.org/10.60084/ijma.v3i1.301"
+  },
+
+  {
+    "authors": ["Irsan Hardi, Ghalieb Mutig Idroes, Laura Márquez-Ramos", "Teuku Rizky Noviandy", "Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Inclusive Innovation and Green Growth in Advanced Economies",
+    "journal": "Sustainable Futures",
+    "link": "https://doi.org/10.1016/j.sftr.2025.100540"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Ghazi Mauer Idroes, Maria Paristiowati, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Techniques and Tools in Learning Analytics and Educational Data Mining: A Review",
+    "journal": "Journal of Educational Management and Learning",
+    "link": "https://doi.org/10.60084/jeml.v3i1.308"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Ghifari Maulana Idroes, Andi Lala, Zuchra Helwani, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Inductive Biases in Feature Reduction for QSAR: SHAP vs. Autoencoders",
+    "journal": "Infolitika Journal of Data Science",
+    "link": "https://doi.org/10.60084/ijds.v3i1.306"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Ghazi Mauer Idroes, Teuku Zulfikar, Rinaldi Idroes"],
     "year": "2025",
     "title": "Explainable Deep Learning with Lightweight CNNs for Tuberculosis Classification",
     "journal": "Infolitika Journal of Data Science",
@@ -9,7 +49,7 @@
   },
 
   {
-    "authors": ["Teuku Rizky Noviandy, Ghalieb Mutig Idroes, Irsan Hardi, Edi Saputra Ringga, Rinaldi Idroes"],
+    "authors": ["Teuku Rizky Noviandy", "Ghalieb Mutig Idroes, Irsan Hardi, Edi Saputra Ringga, Rinaldi Idroes"],
     "year": "2025",
     "title": "An Explainable Machine Learning Study of Behavioral and Psychological Determinants of Depression in the Academic Environment",
     "journal": "Journal of Educational Management and Learning",
@@ -17,7 +57,7 @@
   },
 
   {
-    "authors": ["Teuku Rizky Noviandy, Ghifari Maulana Idroes, Essy Harnelly, Irma Sari, Fazlin Mohd Fauzi, Rinaldi Idroes"],
+    "authors": ["Teuku Rizky Noviandy", "Ghifari Maulana Idroes, Essy Harnelly, Irma Sari, Fazlin Mohd Fauzi, Rinaldi Idroes"],
     "year": "2025",
     "title": "Predicting AXL Tyrosine Kinase Inhibitor Potency Using Machine Learning with Interpretable Insights for Cancer Drug Discovery",
     "journal": "Heca Journal of Applied Sciences",

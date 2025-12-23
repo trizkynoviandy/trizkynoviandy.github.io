@@ -1,4 +1,75 @@
 [
+  {
+    "authors": ["Novi Reandy Sasmita, Mhd Khairul, Nurhasanah Nurhasanah, Feby Apriliansyah", "Teuku Rizky Noviandy", "Lyra Yulianti, Syaharuddin Syaharuddin"],
+    "year": "2025",
+    "title": "Analyzing PM2. 5 Levels in Indonesia Using Dynamic Time Warping and Fuzzy Clustering: A Time-Series Ecological Study",
+    "journal": "Science & Technology Asia",
+    "link": "https://ph02.tci-thaijo.org/index.php/SciTechAsia/article/view/260431"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Mohsina Patwekar, Faheem Patwekar, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "An Interpretable Machine Learning Framework for Predicting Advanced Tumor Stages",
+    "journal": "Infolitika Journal of Data Science",
+    "link": "https://heca-analitika.com/ijds/article/view/364"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Maria Paristiowati, Illyas Md Isa, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "The Role of Study Habits, Parental Involvement, and School Environment in Predicting Student Achievement: A Machine Learning Perspective",
+    "journal": "Journal of Educational Management and Learning",
+    "link": "https://heca-analitika.com/jeml/article/view/350"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Ghazi Mauer Idroes, Mohsina Patwekar, Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Fine-Tuning ChemBERTa for Predicting Activity of AXL Kinase Inhibitors in Oncogenic Target Modeling",
+    "journal": "Grimsa Journal of Science Engineering and Technology",
+    "link": "https://journals.grimsa.org/index.php/gjset/article/view/98"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Interpretable Machine Learning QSAR Models for Classification and Screening of VEGFR-2 Inhibitors in Anticancer Drug Discovery",
+    "journal": "Malacca Pharmaceutics",
+    "link": "https://heca-analitika.com/malacca_pharmaceutics/article/view/339"
+  },
+
+  {
+    "authors": ["Irsan Hardi, Edi Saputra Ringga, Ghalieb Mutig Idroes, Chahayu Astina, Umri Praja Muda", "Teuku Rizky Noviandy", "Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Green Human Development in Indonesia: Role of Renewable and Nonrenewable Energy",
+    "journal": "Chinese Journal of Population, Resources and Environment",
+    "link": "https://www.sciencedirect.com/science/article/pii/S2325426225000543"
+  },
+
+  {
+    "authors": ["Ghalieb Mutig Idroes, Iffah Hafizah, Djoni Hartono, Dian Budi Dharma, Irsan Hardi", "Teuku Rizky Noviandy", "Rinaldi Idroes"],
+    "year": "2025",
+    "title": "Investigating Hydropower Energy Consumption's Effect on Southeast Asia's Path to Achieving Environmental Sustainability and Carbon Neutrality",
+    "journal": "Carbon Research",
+    "link": "https://link.springer.com/article/10.1007/s44246-025-00218-4"
+  },
+
+  {
+    "authors": ["Qalbin Salim Fazli", "Ghalieb Mutig Idroes", "Iin Shabrina Hilal", "Iffah Hafizah", "Irsan Hardi", "Teuku Rizky Noviandy"],
+    "year": "2025",
+    "title": "Agrochemicals, GHG emissions, and GDP in Southeast Asia: a machine learning approach with hierarchical clustering",
+    "journal": "Grimsa Journal of Business and Economics Studies",
+    "link": "https://journals.grimsa.org/index.php/gjbes/article/view/93"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Ghalieb Mutig Idroes", "Irsan Hardi"],
+    "year": "2025",
+    "title": "An Interpretable Bayesian-optimized XGBoost Framework for Neuropsychiatric Drug Candidate Classification",
+    "journal": "Iran Journal of Computer Science",
+    "link": "https://link.springer.com/article/10.1007/s42044-025-00297-x"
+  },
 
   {
     "authors": ["Irsan Hardi, Robert Kurniawan, Samrat Ray, Ghalieb Mutig Idroes", "Teuku Rizky Noviandy", "M Shabri Abd Majid"],

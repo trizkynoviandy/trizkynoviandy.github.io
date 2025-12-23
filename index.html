@@ -243,7 +243,7 @@
     
                             const item = document.createElement('li');
                             item.className = 'p-4 bg-gray-200 rounded-lg';
-                            item.innerHTML = `${authors}, ${pub.year}. <em>${pub.title}</em>. ${pub.journal}. <a href="${pub.link}" class="text-blue-500" target="_blank">[Link]</a>`;
+                            item.innerHTML = `${authors}. (${pub.year}). ${pub.title}. <em>${pub.journal}</em>. <a href="${pub.link}" class="text-blue-500" target="_blank">[Full Text]</a>`;
     
                             list.appendChild(item);
                         });

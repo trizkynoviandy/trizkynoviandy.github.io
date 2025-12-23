@@ -1,4 +1,77 @@
 [
+
+  {
+    "authors": [],
+    "year": "",
+    "title": "",
+    "journal": "",
+    "link": ""
+  },
+
+  {
+    "authors": ["Aga Maulana", "Teuku Rizky Noviandy", "Rivansyah Suhendra, Nanda Earlia, Hizir Sofyan, Muhammad Subianto, Rinaldi Idroes"],
+    "year": "2023",
+    "title": "Performance Analysis and Feature Extraction for Classifying the Severity of Atopic Dermatitis Diseases",
+    "journal": "2023 2nd International Conference on Computer System, Information Technology, and Electrical Engineering (COSITE)",
+    "link": "https://ieeexplore.ieee.org/abstract/document/10249760/"
+  },
+
+  {
+    "authors": ["Ghazi Mauer Idroes", "Teuku Rizky Noviandy", "Aga Maulana, Irvanizam Irvanizam, Zulkarnain Jalil, Lensoni Lensoni, Andi Lala, Abdul Hawil Abas, Trina Ekawati Tallei, Rinaldi Idroes"],
+    "year": "2023",
+    "title": "Student Perspectives on the Role of Artificial Intelligence in Education: A Survey-Based Analysis",
+    "journal": "Journal of Educational Management and Learning",
+    "link": "https://heca-analitika.com/jeml/article/view/58"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Aga Maulana, Ghazi Mauer Idroes, Nur Balqis Maulydia, Mohsina Patwekar, Rivansyah Suhendra, Rinaldi Idroes"],
+    "year": "2023",
+    "title": "Integrating Genetic Algorithm and LightGBM for QSAR Modeling of Acetylcholinesterase Inhibitors in Alzheimer's Disease Drug Discovery",
+    "journal": "Malacca Pharmaceutics",
+    "link": "https://heca-analitika.com/malacca_pharmaceutics/article/view/60"
+  },
+
+  {
+    "authors": ["Teuku Rizky Noviandy", "Aga Maulana, Ghazi Mauer Idroes, Rivansyah Suhendra, Muhammad Adam, Asep Rusyana, Hizir Sofyan"],
+    "year": "2023",
+    "title": "Deep Learning-based Bitcoin Price Forecasting Using Neural Prophet",
+    "journal": "Ekonomikalia Journal of Economics",
+    "link": "https://heca-analitika.com/eje/article/view/51"
+  },
+
+  {
+    "authors": ["Ridzky Aulia Bahri", "Teuku Rizky Noviandy", "Rivansyah Suhendra, Ghazi Mauer Idroes, Muhammad Yanis, Erkata Yandri, Nizamuddin Nizamuddin, Irvanizam Irvanizam"],
+    "year": "2023",
+    "title": "Utilization of Drone With Thermal Camera in Mapping Digital Elevation Model for Ie Seu'um Geothermal Manifestation Exploration Security",
+    "journal": "Leuser Journal of Environmental Studies",
+    "link": "https://heca-analitika.com/ljes/article/view/40"
+  },
+
+  {
+    "authors": ["Aga Maulana", "Teuku Rizky Noviandy", "Novi Reandy Sasmita, Maria Paristiowati, Rivansyah Suhendra, Erkata Yandri, Justinus Satrio, Rinaldi Idroes"],
+    "year": "2023",
+    "title": "Optimizing University Admissions: A Machine Learning Perspective",
+    "journal": "",
+    "link": "https://heca-analitika.com/jeml/article/view/46"
+  },
+
+  {
+    "authors": ["Ghazi Mauer Idroes, Aga Maulana, Rivansyah Suhendra, Andi Lala, Taufiq Karma, Fitranto Kusumo, Yuni Tri Hewindati", "Teuku Rizky Noviandy"],
+    "year": "2023",
+    "title": "TeutongNet: A Fine-tuned Deep Learning Model for Improved Forest Fire Detection",
+    "journal": "Leuser Journal of Environmental Studies",
+    "link": "https://heca-analitika.com/ljes/article/view/42"
+  },
+
+  {
+    "authors": ["Nur Balqis Maulydia, Khairan Khairan", "Teuku Rizky Noviandy"],
+    "year": "2023",
+    "title": "Prediction of Pharmacokinetic Parameters From Ethanolic Extract Mane Leaves (Vitex pinnata L.) in Geothermal Manifestation of Seulawah Agam Ie-Seu’um, Aceh",
+    "journal": "Malacca Pharmaceutics",
+    "link": "https://heca-analitika.com/malacca_pharmaceutics/article/view/33"
+  },
+
   {
     "authors": ["Teuku Rizky Noviandy", "Aga Maulana", "Talha Bin Emran", "Ghazi Mauer Idroes", "Rinaldi Idroes"],
     "year": "2023",

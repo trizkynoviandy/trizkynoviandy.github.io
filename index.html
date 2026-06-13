@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teuku Rizky Noviandy's Portfolio</title>
+
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:title" content="Teuku Rizky Noviandy - Portfolio">
+    <meta property="og:description" content="Lecturer in the Department of Information Systems, Universitas Abulyatama. Research focus on QSRR/QSAR modeling, machine learning, cheminformatics, and explainable AI.">
+    <meta property="og:image" content="https://trizkynoviandy.github.io/images/profile.jpg">
+    <meta property="og:url" content="https://trizkynoviandy.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Teuku Rizky Noviandy - Portfolio">
+    <meta name="twitter:description" content="Lecturer in the Department of Information Systems, Universitas Abulyatama. Research focus on QSRR/QSAR modeling, machine learning, cheminformatics, and explainable AI.">
+    <meta name="twitter:image" content="https://trizkynoviandy.github.io/images/profile.jpg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,6 +22,9 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css"> -->
         <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Open Sans', sans-serif;
         }
@@ -84,6 +98,15 @@
         html.dark p, html.dark li, html.dark span {
             color: #cbd5e0;
         }
+        html.dark .text-gray-600, html.dark .text-gray-700 {
+            color: #a0aec0 !important;
+        }
+        html.dark a.text-blue-500, html.dark a.text-blue-500 span {
+            color: #63b3ed !important;
+        }
+        html.dark #publications-container a.text-blue-500 {
+            color: #63b3ed !important;
+        }
         html.dark .bg-gray-100 {
             background-color: #1a202c;
         }
@@ -96,12 +119,54 @@
         html.dark #theme-toggle i {
             color: #f7fafc;
         }
+        html.dark aside a:hover {
+            background-color: #374151 !important;
+        }
+        html.dark hr {
+            border-color: #4a5568;
+        }
+
+        /* Print stylesheet */
+        @media print {
+            header, footer, #theme-toggle, #menu-toggle, #pub-search, #pub-year-filter,
+            .toggle-btn, #statistics, #publications canvas {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            aside, main, section, .bg-white, .bg-gray-100, .bg-gray-200 {
+                background: white !important;
+                box-shadow: none !important;
+                color: black !important;
+            }
+            aside {
+                position: static !important;
+                width: 100% !important;
+            }
+            main {
+                margin-left: 0 !important;
+            }
+            section {
+                page-break-inside: avoid;
+                margin-bottom: 0.5rem !important;
+                padding: 0.5rem !important;
+            }
+            #publications-container ul {
+                display: block !important;
+            }
+            a {
+                color: black !important;
+                text-decoration: none !important;
+            }
+        }
 
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto p-4 flex justify-between items-center">
+        <nav class="w-full px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold">Teuku Rizky Noviandy</h1>
         
             <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none">
@@ -122,61 +187,60 @@
     </header>
 
     <div class="flex flex-col md:flex-row min-h-screen">
-        <aside class="w-full md:w-1/4 bg-white shadow-md p-6 md:fixed md:h-full md:overflow-y-auto">   
+        <aside class="w-full md:w-1/4 bg-white shadow-md p-6 md:fixed md:h-full md:overflow-y-auto">
             <div class="text-center">
-                <img src="images/profile.jpg" alt="Profile Picture" class="w-32 h-32 rounded-full shadow-lg mx-auto mb-4">
-                <h2 class="text-2xl font-semibold mb-2">Teuku Rizky Noviandy</h2>
-                <p class="italic text-gray-600 pb-4">Lecturer in the Department of Information Systems, Universitas Abulyatama</p>
-                <p>Aceh, Indonesia</p><br>
-                <div class="space-y-4 text-left">
-                    <body>
-                        <a href="mailto:rizky_si@abulyatama.ac.id" class="flex items-center text-blue-500">
-                            <i class="fa-solid fa-envelope mr-2"></i>
-                            <span class="hover:underline">Email</span>
-                        </a>
-                    
-                        <a href="https://github.com/trizkynoviandy" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-brands fa-github mr-2"></i>
-                            <span class="hover:underline">GitHub</span>
-                        </a>
-                    
-                        <a href="https://www.linkedin.com/in/teuku-rizky-noviandy-4b609a248/" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-brands fa-linkedin mr-2"></i>
-                            <span class="hover:underline">LinkedIn</span>
-                        </a>
-                    
-                        <a href="https://www.scopus.com/authid/detail.uri?authorId=57215579311" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-solid fa-book-open mr-2"></i>
-                            <span class="hover:underline">Scopus</span>
-                        </a>
+                <img src="images/profile.jpg" alt="Profile Picture" loading="lazy" class="w-28 h-28 rounded-full shadow-lg mx-auto mb-3">
+                <h2 class="text-xl font-semibold mb-1">Teuku Rizky Noviandy</h2>
+                <p class="italic text-gray-600 text-sm pb-1">Lecturer in the Department of Information Systems, Universitas Abulyatama</p>
+                <p class="text-gray-600 text-sm mb-4">Aceh, Indonesia</p>
 
-                        <a href="https://www.webofscience.com/wos/author/record/GQQ-6148-2022" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-solid fa-globe mr-2"></i>
-                            <span class="hover:underline">Web of Science</span>
-                        </a>
-                    
-                        <a href="https://orcid.org/0000-0002-5779-2235" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-brands fa-orcid mr-2"></i>
-                            <span class="hover:underline">ORCID</span>
-                        </a>
-                    
-                        <a href="https://twitter.com/trizkynoviandy" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-brands fa-x-twitter mr-2"></i>
-                            <span class="hover:underline">X (Formerly Twitter)</span>
-                        </a>
-                    
-                        <a href="https://www.researchgate.net/profile/Teuku-Rizky-Noviandy" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-brands fa-researchgate mr-2"></i>
-                            <span class="hover:underline">ResearchGate</span>
-                        </a>                  
-                    
-                        <a href="https://scholar.google.com/citations?user=zL10IUEAAAAJ&hl=en" class="flex items-center text-blue-500" target="_blank">
-                            <i class="fa-brands fa-google mr-2"></i>
-                            <span class="hover:underline">Google Scholar</span>
-                        </a>
-                    </body>
-                    
-                    
+                <hr class="border-gray-200 mb-3">
+
+                <div class="space-y-1 text-left">
+                    <a href="mailto:rizky_si@abulyatama.ac.id" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors">
+                        <i class="fa-solid fa-envelope w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">Email</span>
+                    </a>
+
+                    <a href="https://github.com/trizkynoviandy" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-brands fa-github w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">GitHub</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/teuku-rizky-noviandy-4b609a248/" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-brands fa-linkedin w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">LinkedIn</span>
+                    </a>
+
+                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57215579311" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-solid fa-book-open w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">Scopus</span>
+                    </a>
+
+                    <a href="https://www.webofscience.com/wos/author/record/GQQ-6148-2022" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-solid fa-globe w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">Web of Science</span>
+                    </a>
+
+                    <a href="https://orcid.org/0000-0002-5779-2235" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-brands fa-orcid w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">ORCID</span>
+                    </a>
+
+                    <a href="https://twitter.com/trizkynoviandy" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-brands fa-x-twitter w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">X (Formerly Twitter)</span>
+                    </a>
+
+                    <a href="https://www.researchgate.net/profile/Teuku-Rizky-Noviandy" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-brands fa-researchgate w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">ResearchGate</span>
+                    </a>
+
+                    <a href="https://scholar.google.com/citations?user=zL10IUEAAAAJ&hl=en" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
+                        <i class="fa-brands fa-google w-5 mr-3 text-center"></i>
+                        <span class="hover:underline">Google Scholar</span>
+                    </a>
                 </div>
             </div>
         </aside>
@@ -198,11 +262,11 @@
                     <table class="w-full text-left mb-6 border-collapse">
                         <tbody>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2022 - 2024</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">2022 - 2024</td>
                                 <td class="py-2 align-top"><strong>Master's in Artificial Intelligence</strong> — Universitas Syiah Kuala</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2014 - 2020</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">2014 - 2020</td>
                                 <td class="py-2 align-top"><strong>Bachelor's in Informatics</strong> — Universitas Syiah Kuala</td>
                             </tr>
                         </tbody>
@@ -212,15 +276,15 @@
                     <table class="w-full text-left border-collapse">
                         <tbody>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2024 - Present</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">2024 - Present</td>
                                 <td class="py-2 align-top"><strong>Lecturer</strong> — Universitas Abulyatama</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2023 - Present</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">2023 - Present</td>
                                 <td class="py-2 align-top"><strong>Associate Researcher</strong> — PT. Graha Primera Saintifika</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2023 - Present</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">2023 - Present</td>
                                 <td class="py-2 align-top"><strong>Managing Editor</strong> — PT. Heca Sentra Analitika</td>
                             </tr>
                         </tbody>
@@ -234,15 +298,31 @@
                     <table class="w-full text-left border-collapse">
                         <tbody>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">Course Name 1</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Data Mining</td>
                                 <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">Course Name 2</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Artificial Intelligence</td>
                                 <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">Course Name 3</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Information Retrieval</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Digital Image Processing</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Natural Language Processing</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Digital Transformation</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40">Statistics and Probability</td>
                                 <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
                             </tr>
                         </tbody>
@@ -282,7 +362,7 @@
     </div>
 
     <footer>
-        &copy; 2025 Teuku Rizky Noviandy. All rights reserved.
+        &copy; 2026 Teuku Rizky Noviandy. All rights reserved.
         <p id="last-updated" class="text-sm text-gray-300 mt-1"></p>
     </footer>
 

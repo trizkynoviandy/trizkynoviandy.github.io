@@ -65,6 +65,38 @@
             padding-right: 10px;
         }
 
+        /* Dark mode */
+        html.dark body {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        html.dark header,
+        html.dark aside,
+        html.dark section,
+        html.dark .bg-white {
+            background-color: #2d3748;
+        }
+        html.dark h1, html.dark h2, html.dark h3,
+        html.dark h4, html.dark h5, html.dark h6,
+        html.dark strong {
+            color: #f7fafc;
+        }
+        html.dark p, html.dark li, html.dark span {
+            color: #cbd5e0;
+        }
+        html.dark .bg-gray-100 {
+            background-color: #1a202c;
+        }
+        html.dark .bg-gray-200 {
+            background-color: #4a5568;
+        }
+        html.dark .border, html.dark .border-b {
+            border-color: #4a5568;
+        }
+        html.dark #theme-toggle i {
+            color: #f7fafc;
+        }
+
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
@@ -76,13 +108,16 @@
                 ☰ <!-- Simple Hamburger Icon -->
             </button>
     
-            <ul id="nav-menu" class="hidden md:flex space-x-4 ml-auto">
+            <ul id="nav-menu" class="hidden md:flex space-x-4 ml-auto items-center">
                 <li><a href="#about" class="hover:text-blue-500">About</a></li>
                 <li><a href="#cv" class="hover:text-blue-500">CV</a></li>
                 <li><a href="#teaching" class="hover:text-blue-500">Teaching</a></li>
                 <li><a href="#research" class="hover:text-blue-500">Research Interest</a></li>
                 <li><a href="#publications" class="hover:text-blue-500">Publications</a></li>
             </ul>
+            <button id="theme-toggle" class="ml-4 text-gray-900 focus:outline-none" title="Toggle dark mode">
+                <i id="theme-icon" class="fa-solid fa-moon"></i>
+            </button>
         </nav>
     </header>
 
@@ -160,28 +195,58 @@
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold text-center mb-6">Curriculum Vitae</h2>
                     <h3 class="text-2xl font-semibold mb-4">Education</h3>
-                    <ul class="list-disc custom-list mb-6">
-                        <li><strong>Master’s in Artificial Intelligence</strong> - Universitas Syiah Kuala, 2022-2024</li>
-                        <li><strong>Bachelor’s in Informatics</strong> - Universitas Syiah Kuala, 2014-2020</li>
-                    </ul>
+                    <table class="w-full text-left mb-6 border-collapse">
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2022 - 2024</td>
+                                <td class="py-2 align-top"><strong>Master's in Artificial Intelligence</strong> — Universitas Syiah Kuala</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2014 - 2020</td>
+                                <td class="py-2 align-top"><strong>Bachelor's in Informatics</strong> — Universitas Syiah Kuala</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                     <h3 class="text-2xl font-semibold mb-4">Work Experience</h3>
-                    <ul class="list-disc custom-list">
-                        <li><strong>Lecturer</strong> — Universitas Abulyatama, 2024 - Present</li>
-                        <li><strong>Associate Researcher</strong> — PT. Graha Primera Saintifika, 2023 - Present</li>
-                        <li><strong>Managing Editor</strong> — PT. Heca Sentra Analitika, 2023 - Present</li>
-                    </ul>
+                    <table class="w-full text-left border-collapse">
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2024 - Present</td>
+                                <td class="py-2 align-top"><strong>Lecturer</strong> — Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2023 - Present</td>
+                                <td class="py-2 align-top"><strong>Associate Researcher</strong> — PT. Graha Primera Saintifika</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">2023 - Present</td>
+                                <td class="py-2 align-top"><strong>Managing Editor</strong> — PT. Heca Sentra Analitika</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
             <section id="teaching" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold text-center mb-6">Teaching</h2>
-                    <ul class="list-disc custom-list">
-                        <li><strong>Course Name 1</strong> — Department of Information Systems, Universitas Abulyatama</li>
-                        <li><strong>Course Name 2</strong> — Department of Information Systems, Universitas Abulyatama</li>
-                        <li><strong>Course Name 3</strong> — Department of Information Systems, Universitas Abulyatama</li>
-                    </ul>
+                    <table class="w-full text-left border-collapse">
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">Course Name 1</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">Course Name 2</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top">Course Name 3</td>
+                                <td class="py-2 align-top">Department of Information Systems, Universitas Abulyatama</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
@@ -218,12 +283,54 @@
 
     <footer>
         &copy; 2025 Teuku Rizky Noviandy. All rights reserved.
+        <p id="last-updated" class="text-sm text-gray-300 mt-1"></p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             lucide.createIcons();
+
+            // Dark mode toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlEl = document.documentElement;
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    htmlEl.classList.add('dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    htmlEl.classList.remove('dark');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            }
+
+            const savedTheme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+
+            themeToggle.addEventListener('click', () => {
+                const newTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            // Last updated timestamp (from latest commit on the repo)
+            fetch('https://api.github.com/repos/trizkynoviandy/trizkynoviandy.github.io/commits?per_page=1')
+                .then(res => res.json())
+                .then(commits => {
+                    if (Array.isArray(commits) && commits.length > 0) {
+                        const date = new Date(commits[0].commit.committer.date);
+                        document.getElementById('last-updated').textContent =
+                            `Last updated: ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`;
+                    }
+                })
+                .catch(() => {
+                    // Silently ignore if API is unavailable
+                });
     
             const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
             const fetchPromises = years.map(year => fetch(`publications/${year}_publications.json`).then(res => res.json()));

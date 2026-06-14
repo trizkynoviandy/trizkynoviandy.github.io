@@ -109,18 +109,55 @@
         }
         @media (max-width: 768px) {
             aside {
-                position: relative; /* Remove fixed positioning */
-                width: 100%;         /* Full-width on mobile */
-                margin-bottom: 1rem; /* Add space below the sidebar */
+                position: relative;
+                width: 100%;
+                margin-bottom: 1rem;
             }
-            
             main {
-                margin-left: 0;      /* Remove left margin */
-            }
-            
-            footer {
-                width: 100%;         /* Full-width footer */
                 margin-left: 0;
+                padding: 1rem; /* reduce padding on mobile */
+            }
+            footer {
+                width: 100%;
+                margin-left: 0;
+            }
+            /* Tighten section padding on mobile */
+            .padded-box {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            /* CV table: allow text wrapping on mobile */
+            #cv table td.whitespace-nowrap {
+                white-space: normal;
+                width: auto;
+            }
+            /* Aside: collapse social links to icon grid on mobile */
+            .social-icon span { display: none; }
+            .aside-links {
+                display: grid !important;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 0.5rem;
+                justify-items: center;
+            }
+            .aside-links a {
+                padding: 0.5rem;
+                justify-content: center;
+            }
+            /* Research cards: single column on small screens */
+            #research .grid {
+                grid-template-columns: 1fr !important;
+            }
+            /* Stats charts: stack vertically */
+            #statistics .grid {
+                grid-template-columns: 1fr !important;
+            }
+            /* Reduce heading sizes on mobile */
+            h2.text-3xl { font-size: 1.5rem; }
+            h3.text-2xl { font-size: 1.25rem; }
+            /* Nav active bar */
+            #nav-menu {
+                flex-wrap: wrap;
+                gap: 0.25rem;
             }
         }
         #nav-menu li:not(:last-child) {
@@ -185,7 +222,124 @@
             color: #2dd4bf !important;
         }
 
-        /* Print stylesheet */
+        /* Fade-in on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Reading progress bar */
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(to right, var(--accent), #2dd4bf);
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
+        /* Back-to-top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.35);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 999;
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #back-to-top:hover {
+            background: var(--accent-dark);
+        }
+
+        /* Impact metrics widget */
+        #metrics-widget {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            background: var(--accent-light);
+        }
+        html.dark #metrics-widget {
+            background: #134e4a;
+        }
+        .metric-item {
+            text-align: center;
+            flex: 1;
+        }
+        .metric-value {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-dark);
+            line-height: 1.2;
+        }
+        html.dark .metric-value { color: #2dd4bf; }
+        .metric-label {
+            font-size: 0.65rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        html.dark .metric-label { color: #94a3b8; }
+        .metric-divider {
+            width: 1px;
+            background: rgba(13,148,136,0.2);
+            align-self: stretch;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
+
+        /* Social icon hover — subtle only */
+        .social-icon {
+            transition: color 0.2s ease;
+        }
+        .social-icon:hover {
+            color: var(--accent) !important;
+        }
+
+        /* Active nav link */
+        #nav-menu a.nav-active {
+            color: var(--accent) !important;
+            font-weight: 700;
+        }
+
+        /* Shadow & border accent variants */
+        #about {
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 4px 24px rgba(13,148,136,0.10), 0 1px 4px rgba(0,0,0,0.06);
+        }
+        #publications {
+            box-shadow: 0 8px 32px rgba(13,148,136,0.10), 0 1px 4px rgba(0,0,0,0.06);
+        }
+        #statistics {
+            border-left: 4px solid var(--accent);
+        }
         @media print {
             header, footer, #theme-toggle, #menu-toggle, #pub-search, #pub-year-filter,
             .toggle-btn, #statistics, #publications canvas {
@@ -224,6 +378,10 @@
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
+    <div id="progress-bar"></div>
+    <button id="back-to-top" title="Back to top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up text-sm"></i>
+    </button>
     <header class="bg-white shadow-md sticky top-0 z-50">
         <nav class="w-full px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold">Teuku Rizky Noviandy</h1>
@@ -255,57 +413,61 @@
 
                 <hr class="border-gray-200 mb-3">
 
-                <div class="space-y-1 text-left">
-                    <a href="mailto:rizky_si@abulyatama.ac.id" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors">
-                        <i class="fa-solid fa-envelope w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">Email</span>
+                <div class="aside-links mt-2 space-y-1">
+                    <a href="mailto:rizky_si@abulyatama.ac.id" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" title="Email">
+                        <i class="fa-solid fa-envelope w-4 text-center"></i><span class="text-sm">Email</span>
                     </a>
+                    <a href="https://github.com/trizkynoviandy" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="GitHub">
+                        <i class="fa-brands fa-github w-4 text-center"></i><span class="text-sm">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/teuku-rizky-noviandy-4b609a248/" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin w-4 text-center"></i><span class="text-sm">LinkedIn</span>
+                    </a>
+                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57215579311" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Scopus">
+                        <i class="fa-solid fa-book-open w-4 text-center"></i><span class="text-sm">Scopus</span>
+                    </a>
+                    <a href="https://www.webofscience.com/wos/author/record/GQQ-6148-2022" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Web of Science">
+                        <i class="fa-solid fa-globe w-4 text-center"></i><span class="text-sm">Web of Science</span>
+                    </a>
+                    <a href="https://orcid.org/0000-0002-5779-2235" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="ORCID">
+                        <i class="fa-brands fa-orcid w-4 text-center"></i><span class="text-sm">ORCID</span>
+                    </a>
+                    <a href="https://twitter.com/trizkynoviandy" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="X (Twitter)">
+                        <i class="fa-brands fa-x-twitter w-4 text-center"></i><span class="text-sm">X (Twitter)</span>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Teuku-Rizky-Noviandy" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="ResearchGate">
+                        <i class="fa-brands fa-researchgate w-4 text-center"></i><span class="text-sm">ResearchGate</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=zL10IUEAAAAJ&hl=en" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Google Scholar">
+                        <i class="fa-brands fa-google w-4 text-center"></i><span class="text-sm">Google Scholar</span>
+                    </a>
+                </div>
 
-                    <a href="https://github.com/trizkynoviandy" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-brands fa-github w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">GitHub</span>
-                    </a>
-
-                    <a href="https://www.linkedin.com/in/teuku-rizky-noviandy-4b609a248/" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-brands fa-linkedin w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">LinkedIn</span>
-                    </a>
-
-                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57215579311" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-solid fa-book-open w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">Scopus</span>
-                    </a>
-
-                    <a href="https://www.webofscience.com/wos/author/record/GQQ-6148-2022" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-solid fa-globe w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">Web of Science</span>
-                    </a>
-
-                    <a href="https://orcid.org/0000-0002-5779-2235" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-brands fa-orcid w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">ORCID</span>
-                    </a>
-
-                    <a href="https://twitter.com/trizkynoviandy" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-brands fa-x-twitter w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">X (Formerly Twitter)</span>
-                    </a>
-
-                    <a href="https://www.researchgate.net/profile/Teuku-Rizky-Noviandy" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-brands fa-researchgate w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">ResearchGate</span>
-                    </a>
-
-                    <a href="https://scholar.google.com/citations?user=zL10IUEAAAAJ&hl=en" class="flex items-center text-blue-500 p-1.5 rounded-lg hover:bg-blue-50 transition-colors" target="_blank">
-                        <i class="fa-brands fa-google w-5 mr-3 text-center"></i>
-                        <span class="hover:underline">Google Scholar</span>
-                    </a>
+                <div id="metrics-widget">
+                    <p class="text-xs font-semibold text-center mb-2" style="color: var(--accent-dark);">Impact Metrics</p>
+                    <div class="flex items-center gap-1">
+                        <div class="metric-item">
+                            <div class="metric-value" id="m-citations">—</div>
+                            <div class="metric-label">Citations</div>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <div class="metric-value" id="m-hindex">—</div>
+                            <div class="metric-label">h-index</div>
+                        </div>
+                        <div class="metric-divider"></div>
+                        <div class="metric-item">
+                            <div class="metric-value" id="m-papers">—</div>
+                            <div class="metric-label">Papers</div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-1" style="font-size:0.6rem; color:#9ca3af;">via Semantic Scholar</p>
                 </div>
             </div>
         </aside>
 
         <main class="flex-1 p-8 md:ml-1/4">
-            <section id="about" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+            <section id="about" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold text-center mb-6">About Me</h2>
                     <p class="text-gray-700 text-justify">
@@ -314,18 +476,18 @@
                 </div>
             </section>
 
-            <section id="cv" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+            <section id="cv" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold mb-6">Curriculum Vitae</h2>
                     <h3 class="text-2xl font-semibold mb-4">Education</h3>
                     <table class="w-full text-left mb-6 border-collapse">
                         <tbody>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40" style="color: var(--accent);">2022 - 2024</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2022 – 2024</td>
                                 <td class="py-2 align-top"><strong>Master's in Artificial Intelligence</strong> — Universitas Syiah Kuala</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40" style="color: var(--accent);">2014 - 2020</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2014 – 2020</td>
                                 <td class="py-2 align-top"><strong>Bachelor's in Informatics</strong> — Universitas Syiah Kuala</td>
                             </tr>
                         </tbody>
@@ -335,15 +497,15 @@
                     <table class="w-full text-left border-collapse">
                         <tbody>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40" style="color: var(--accent);">2024 - Present</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2024 – Present</td>
                                 <td class="py-2 align-top"><strong>Lecturer</strong> — Universitas Abulyatama</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40" style="color: var(--accent);">2023 - Present</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2023 – Present</td>
                                 <td class="py-2 align-top"><strong>Associate Researcher</strong> — PT. Graha Primera Saintifika</td>
                             </tr>
                             <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-40" style="color: var(--accent);">2023 - Present</td>
+                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2023 – Present</td>
                                 <td class="py-2 align-top"><strong>Managing Editor</strong> — PT. Heca Sentra Analitika</td>
                             </tr>
                         </tbody>
@@ -351,7 +513,7 @@
                 </div>
             </section>
 
-            <section id="teaching" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+            <section id="teaching" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold mb-2">Teaching</h2>
                     <p class="text-gray-600 text-sm mb-4">Department of Information Systems, Universitas Abulyatama</p>
@@ -367,7 +529,7 @@
                 </div>
             </section>
 
-            <section id="research" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+            <section id="research" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold mb-6">Research Interests</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -396,12 +558,21 @@
                 </div>
             </section>
 
-            <section id="statistics" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
-                <h2 class="text-1xl font-semibold text-center mb-6">Publication Statistics</h2>
-                <canvas id="publicationChart" width="400" height="50"></canvas>
+            <section id="statistics" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+                <h2 class="text-3xl font-semibold mb-6">Publication Statistics</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div>
+                        <p class="text-sm text-gray-500 text-center mb-2">Publications per Year</p>
+                        <canvas id="publicationChart"></canvas>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 text-center mb-2">Distribution by Research Topic</p>
+                        <canvas id="donutChart"></canvas>
+                    </div>
+                </div>
             </section>   
 
-            <section id="publications" class="bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+            <section id="publications" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <h2 class="text-3xl font-semibold text-center mb-6">Publications</h2>
                 <div class="flex flex-col md:flex-row gap-4 mb-6">
                     <input type="text" id="pub-search" placeholder="Search by title, author, or journal..." class="flex-1 border rounded-lg p-2">
@@ -561,40 +732,88 @@
                     // Create publication statistics chart (always based on full dataset)
                     const chartYears = [...new Set(data.map(pub => pub.year))].sort((a, b) => a - b);
                     const publicationCounts = chartYears.map(year => data.filter(pub => pub.year === year).length);
-    
+
+                    // Bar chart with teal gradient
                     const ctx = document.getElementById('publicationChart').getContext('2d');
+                    const barGradient = ctx.createLinearGradient(0, 0, 0, 300);
+                    barGradient.addColorStop(0, 'rgba(13,148,136,0.85)');
+                    barGradient.addColorStop(1, 'rgba(13,148,136,0.15)');
                     new Chart(ctx, {
                         type: 'bar',
                         data: {
                             labels: chartYears,
                             datasets: [{
-                                label: 'Number of Publications',
+                                label: 'Publications',
                                 data: publicationCounts,
-                                backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                                borderColor: 'rgba(54, 162, 235, 1)',
+                                backgroundColor: barGradient,
+                                borderColor: 'rgba(13,148,136,1)',
                                 borderWidth: 1,
-                                borderRadius: 5
+                                borderRadius: 6
                             }]
                         },
                         options: {
                             responsive: true,
                             scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    ticks: {
-                                        stepSize: 1
-                                    }
-                                }
+                                y: { beginAtZero: true, ticks: { stepSize: 1 } }
                             },
                             plugins: {
-                                legend: {
-                                    display: false
-                                },
+                                legend: { display: false },
                                 tooltip: {
                                     callbacks: {
-                                        label: function (context) {
-                                            return `${context.raw} publication${context.raw > 1 ? 's' : ''}`;
-                                        }
+                                        label: ctx => `${ctx.raw} publication${ctx.raw > 1 ? 's' : ''}`
+                                    }
+                                }
+                            }
+                        }
+                    });
+
+                    // Donut chart by research topic (keyword match on title)
+                    const topics = {
+                        'QSRR/QSAR': ['qsrr','qsar','chromatographic','retention'],
+                        'Machine Learning': ['machine learning','random forest','gradient boosting','classification','regression','prediction'],
+                        'Deep Learning': ['deep learning','neural network','cnn','image','detection'],
+                        'Cheminformatics': ['cheminformatics','molecular','docking','drug','compound'],
+                        'XAI': ['explainable','interpretable','shap','lime'],
+                        'Other': []
+                    };
+                    const topicCounts = {};
+                    data.forEach(pub => {
+                        const title = (pub.title || '').toLowerCase();
+                        let matched = false;
+                        for (const [topic, keywords] of Object.entries(topics)) {
+                            if (topic === 'Other') continue;
+                            if (keywords.some(k => title.includes(k))) {
+                                topicCounts[topic] = (topicCounts[topic] || 0) + 1;
+                                matched = true;
+                                break;
+                            }
+                        }
+                        if (!matched) topicCounts['Other'] = (topicCounts['Other'] || 0) + 1;
+                    });
+                    const donutLabels = Object.keys(topicCounts);
+                    const donutData = donutLabels.map(l => topicCounts[l]);
+                    const donutColors = ['#0d9488','#14b8a6','#2dd4bf','#5eead4','#99f6e4','#ccfbf1'];
+
+                    const ctx2 = document.getElementById('donutChart').getContext('2d');
+                    new Chart(ctx2, {
+                        type: 'doughnut',
+                        data: {
+                            labels: donutLabels,
+                            datasets: [{
+                                data: donutData,
+                                backgroundColor: donutColors.slice(0, donutLabels.length),
+                                borderWidth: 2,
+                                borderColor: '#fff'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            cutout: '60%',
+                            plugins: {
+                                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10 } },
+                                tooltip: {
+                                    callbacks: {
+                                        label: ctx => ` ${ctx.label}: ${ctx.raw} paper${ctx.raw > 1 ? 's' : ''}`
                                     }
                                 }
                             }
@@ -608,6 +827,63 @@
                     document.getElementById('statistics-container').innerHTML = '<p class="text-red-500">Error loading statistics.</p>';
                 });
         });
+
+        // Active nav highlight on scroll
+        const navLinks = document.querySelectorAll('#nav-menu a[href^="#"]');
+        const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+        function updateActiveNav() {
+            let current = '';
+            sections.forEach(sec => {
+                if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
+            });
+        }
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+        // Fade-in on scroll via Intersection Observer
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => observer.observe(el));
+        // Reading progress bar
+        const progressBar = document.getElementById('progress-bar');
+        function updateProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+        }
+        window.addEventListener('scroll', updateProgress);
+
+        // Back-to-top button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.scrollY > 300);
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Semantic Scholar impact metrics
+        // Author ID from profile URL: scholar.google user=zL10IUEAAAAJ
+        // Semantic Scholar lookup by name
+        fetch('https://api.semanticscholar.org/graph/v1/author/search?query=Teuku+Rizky+Noviandy&fields=name,citationCount,hIndex,paperCount')
+            .then(r => r.json())
+            .then(data => {
+                const author = data.data && data.data[0];
+                if (author) {
+                    document.getElementById('m-citations').textContent = author.citationCount ?? '—';
+                    document.getElementById('m-hindex').textContent = author.hIndex ?? '—';
+                    document.getElementById('m-papers').textContent = author.paperCount ?? '—';
+                }
+            })
+            .catch(() => {}); // silently fail if API unavailable
+
     </script>
    
 </body>

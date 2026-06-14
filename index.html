@@ -152,10 +152,24 @@
                 grid-template-columns: 1fr !important;
             }
             /* Reduce heading sizes on mobile */
-            h2.text-3xl { font-size: 1.5rem; }
-            h3.text-2xl { font-size: 1.25rem; }
-            /* Nav active bar */
-            #nav-menu {
+            h2.text-3xl { font-size: 1.35rem !important; }
+            h3.text-2xl { font-size: 1.1rem !important; }
+            h1.text-2xl { font-size: 1.1rem !important; }
+            /* CV table font size on mobile */
+            #cv table td {
+                font-size: 0.85rem;
+                padding-top: 0.4rem;
+                padding-bottom: 0.4rem;
+            }
+            /* Publications search bar */
+            #pub-search, #pub-year-filter {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.6rem;
+            }
+            /* Publication list items */
+            #publications-container li {
+                font-size: 0.85rem;
+            }
                 flex-wrap: wrap;
                 gap: 0.25rem;
             }
@@ -211,7 +225,21 @@
         html.dark #theme-toggle i {
             color: #f7fafc;
         }
-        html.dark hr {
+        html.dark #pub-search,
+        html.dark #pub-year-filter {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            border-color: #4a5568;
+        }
+        html.dark #pub-year-filter option {
+            background-color: #2d3748;
+            color: #e2e8f0;
+        }
+        html.dark .metric-value { color: #2dd4bf; }
+        html.dark .metric-label { color: #94a3b8; }
+        html.dark #statistics .rounded-xl {
+            background-color: #134e4a !important;
+        }
             border-color: #4a5568;
         }
         html.dark #cv .rounded-full {
@@ -442,27 +470,6 @@
                         <i class="fa-brands fa-google w-4 text-center"></i><span class="text-sm">Google Scholar</span>
                     </a>
                 </div>
-
-                <div id="metrics-widget">
-                    <p class="text-xs font-semibold text-center mb-2" style="color: var(--accent-dark);">Impact Metrics</p>
-                    <div class="flex items-center gap-1">
-                        <div class="metric-item">
-                            <div class="metric-value" id="m-citations">—</div>
-                            <div class="metric-label">Citations</div>
-                        </div>
-                        <div class="metric-divider"></div>
-                        <div class="metric-item">
-                            <div class="metric-value" id="m-hindex">—</div>
-                            <div class="metric-label">h-index</div>
-                        </div>
-                        <div class="metric-divider"></div>
-                        <div class="metric-item">
-                            <div class="metric-value" id="m-papers">—</div>
-                            <div class="metric-label">Papers</div>
-                        </div>
-                    </div>
-                    <p class="text-center mt-1" style="font-size:0.6rem; color:#9ca3af;">via Semantic Scholar</p>
-                </div>
             </div>
         </aside>
 
@@ -565,9 +572,22 @@
                         <p class="text-sm text-gray-500 text-center mb-2">Publications per Year</p>
                         <canvas id="publicationChart"></canvas>
                     </div>
-                    <div>
-                        <p class="text-sm text-gray-500 text-center mb-2">Distribution by Research Topic</p>
-                        <canvas id="donutChart"></canvas>
+                    <div class="flex flex-col justify-center">
+                        <p class="text-sm text-gray-500 text-center mb-4">Impact Metrics <span class="text-xs">(via Semantic Scholar)</span></p>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div class="p-4 rounded-xl" style="background: var(--accent-light);">
+                                <div class="metric-value" id="m-citations">—</div>
+                                <div class="metric-label mt-1">Citations</div>
+                            </div>
+                            <div class="p-4 rounded-xl" style="background: var(--accent-light);">
+                                <div class="metric-value" id="m-hindex">—</div>
+                                <div class="metric-label mt-1">h-index</div>
+                            </div>
+                            <div class="p-4 rounded-xl" style="background: var(--accent-light);">
+                                <div class="metric-value" id="m-papers">—</div>
+                                <div class="metric-label mt-1">Papers</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>   
@@ -767,58 +787,6 @@
                         }
                     });
 
-                    // Donut chart by research topic (keyword match on title)
-                    const topics = {
-                        'QSRR/QSAR': ['qsrr','qsar','chromatographic','retention'],
-                        'Machine Learning': ['machine learning','random forest','gradient boosting','classification','regression','prediction'],
-                        'Deep Learning': ['deep learning','neural network','cnn','image','detection'],
-                        'Cheminformatics': ['cheminformatics','molecular','docking','drug','compound'],
-                        'XAI': ['explainable','interpretable','shap','lime'],
-                        'Other': []
-                    };
-                    const topicCounts = {};
-                    data.forEach(pub => {
-                        const title = (pub.title || '').toLowerCase();
-                        let matched = false;
-                        for (const [topic, keywords] of Object.entries(topics)) {
-                            if (topic === 'Other') continue;
-                            if (keywords.some(k => title.includes(k))) {
-                                topicCounts[topic] = (topicCounts[topic] || 0) + 1;
-                                matched = true;
-                                break;
-                            }
-                        }
-                        if (!matched) topicCounts['Other'] = (topicCounts['Other'] || 0) + 1;
-                    });
-                    const donutLabels = Object.keys(topicCounts);
-                    const donutData = donutLabels.map(l => topicCounts[l]);
-                    const donutColors = ['#0d9488','#14b8a6','#2dd4bf','#5eead4','#99f6e4','#ccfbf1'];
-
-                    const ctx2 = document.getElementById('donutChart').getContext('2d');
-                    new Chart(ctx2, {
-                        type: 'doughnut',
-                        data: {
-                            labels: donutLabels,
-                            datasets: [{
-                                data: donutData,
-                                backgroundColor: donutColors.slice(0, donutLabels.length),
-                                borderWidth: 2,
-                                borderColor: '#fff'
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            cutout: '60%',
-                            plugins: {
-                                legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10 } },
-                                tooltip: {
-                                    callbacks: {
-                                        label: ctx => ` ${ctx.label}: ${ctx.raw} paper${ctx.raw > 1 ? 's' : ''}`
-                                    }
-                                }
-                            }
-                        }
-                    });
     
                 })
                 .catch(error => {

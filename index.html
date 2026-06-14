@@ -658,25 +658,52 @@
                     // Silently ignore if API is unavailable
                 });
     
-            const years = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
-            const fetchPromises = years.map(year => fetch(`publications/${year}_publications.json`).then(res => res.json()));
-    
-            Promise.all(fetchPromises)
-                .then(yearlyData => {
-                    const data = yearlyData.flat(); // Merge data from all years
+            const container = document.getElementById('publications-container');
+            const noResults = document.getElementById('pub-no-results');
+            const searchInput = document.getElementById('pub-search');
+            const yearFilter = document.getElementById('pub-year-filter');
 
-                    const container = document.getElementById('publications-container');
-                    const noResults = document.getElementById('pub-no-results');
-                    const searchInput = document.getElementById('pub-search');
-                    const yearFilter = document.getElementById('pub-year-filter');
+            container.innerHTML = '<p class="text-gray-400 text-sm">Loading publications from Semantic Scholar...</p>';
 
-                    // Populate year filter options
-                    const allYears = [...new Set(data.map(pub => pub.year))].sort((a, b) => b - a);
-                    allYears.forEach(year => {
-                        const option = document.createElement('option');
-                        option.value = year;
-                        option.textContent = year;
-                        yearFilter.appendChild(option);
+            // Step 1: get author ID
+            fetch('https://api.semanticscholar.org/graph/v1/author/search?query=Teuku+Rizky+Noviandy&fields=name,citationCount,hIndex,paperCount')
+                .then(r => r.json())
+                .then(res => {
+                    const author = res.data && res.data[0];
+                    if (!author) throw new Error('Author not found');
+
+                    // Fill impact metrics
+                    document.getElementById('m-citations').textContent = author.citationCount ?? '—';
+                    document.getElementById('m-hindex').textContent = author.hIndex ?? '—';
+                    document.getElementById('m-papers').textContent = author.paperCount ?? '—';
+
+                    // Step 2: fetch papers
+                    return fetch(`https://api.semanticscholar.org/graph/v1/author/${author.authorId}/papers?fields=title,year,venue,externalIds,authors&limit=100`);
+                })
+                .then(r => r.json())
+                .then(res => {
+                    const papers = (res.data || []).filter(p => p.year);
+
+                    // Normalise to same shape as old JSON
+                    const data = papers.map(p => ({
+                        title: p.title,
+                        year: p.year,
+                        journal: p.venue || 'N/A',
+                        authors: (p.authors || []).map(a => a.name),
+                        link: p.externalIds?.DOI
+                            ? `https://doi.org/${p.externalIds.DOI}`
+                            : p.externalIds?.ArXiv
+                                ? `https://arxiv.org/abs/${p.externalIds.ArXiv}`
+                                : '#'
+                    })).sort((a, b) => b.year - a.year);
+
+                    // Populate year filter
+                    const allYears = [...new Set(data.map(p => p.year))].sort((a, b) => b - a);
+                    yearFilter.innerHTML = '<option value="">All Years</option>';
+                    allYears.forEach(y => {
+                        const opt = document.createElement('option');
+                        opt.value = y; opt.textContent = y;
+                        yearFilter.appendChild(opt);
                     });
 
                     function renderPublications() {
@@ -687,28 +714,20 @@
                             const matchesYear = !selectedYear || String(pub.year) === selectedYear;
                             if (!matchesYear) return false;
                             if (!query) return true;
-
                             const authors = Array.isArray(pub.authors) ? pub.authors.join(', ') : '';
-                            const haystack = `${pub.title} ${pub.journal} ${authors}`.toLowerCase();
-                            return haystack.includes(query);
+                            return `${pub.title} ${pub.journal} ${authors}`.toLowerCase().includes(query);
                         });
 
                         container.innerHTML = '';
-
-                        if (filtered.length === 0) {
-                            noResults.classList.remove('hidden');
-                            return;
-                        }
+                        if (filtered.length === 0) { noResults.classList.remove('hidden'); return; }
                         noResults.classList.add('hidden');
 
-                        // Group filtered publications by year
                         const grouped = filtered.reduce((acc, pub) => {
                             acc[pub.year] = acc[pub.year] || [];
                             acc[pub.year].push(pub);
                             return acc;
                         }, {});
 
-                        // Display publications by year
                         Object.keys(grouped).sort((a, b) => b - a).forEach((year, index) => {
                             const section = document.createElement('div');
                             section.className = 'border rounded-lg shadow-md p-4';
@@ -722,14 +741,12 @@
                             list.style.display = index === 0 ? 'block' : 'none';
 
                             grouped[year].forEach(pub => {
-                                const authors = Array.isArray(pub.authors) ? pub.authors.map(author =>
-                                    author === 'Teuku Rizky Noviandy' ? `<strong>${author}</strong>` : author
-                                ).join(', ') : 'Unknown Authors';
-
+                                const authors = Array.isArray(pub.authors)
+                                    ? pub.authors.map(a => a === 'Teuku Rizky Noviandy' ? `<strong>${a}</strong>` : a).join(', ')
+                                    : 'Unknown Authors';
                                 const item = document.createElement('li');
                                 item.className = 'p-4 bg-gray-200 rounded-lg';
-                                item.innerHTML = `${authors}. (${pub.year}). ${pub.title}. <em>${pub.journal}</em>. <a href="${pub.link}" class="text-blue-500" target="_blank">[Full Text]</a>`;
-
+                                item.innerHTML = `${authors}. (${pub.year}). ${pub.title}. <em>${pub.journal}</em>.${pub.link !== '#' ? ` <a href="${pub.link}" class="text-blue-500" target="_blank">[Full Text]</a>` : ''}`;
                                 list.appendChild(item);
                             });
 
@@ -749,11 +766,9 @@
                     searchInput.addEventListener('input', renderPublications);
                     yearFilter.addEventListener('change', renderPublications);
 
-                    // Create publication statistics chart (always based on full dataset)
-                    const chartYears = [...new Set(data.map(pub => pub.year))].sort((a, b) => a - b);
-                    const publicationCounts = chartYears.map(year => data.filter(pub => pub.year === year).length);
-
-                    // Bar chart with teal gradient
+                    // Bar chart
+                    const chartYears = [...new Set(data.map(p => p.year))].sort((a, b) => a - b);
+                    const publicationCounts = chartYears.map(y => data.filter(p => p.year === y).length);
                     const ctx = document.getElementById('publicationChart').getContext('2d');
                     const barGradient = ctx.createLinearGradient(0, 0, 0, 300);
                     barGradient.addColorStop(0, 'rgba(13,148,136,0.85)');
@@ -762,37 +777,18 @@
                         type: 'bar',
                         data: {
                             labels: chartYears,
-                            datasets: [{
-                                label: 'Publications',
-                                data: publicationCounts,
-                                backgroundColor: barGradient,
-                                borderColor: 'rgba(13,148,136,1)',
-                                borderWidth: 1,
-                                borderRadius: 6
-                            }]
+                            datasets: [{ label: 'Publications', data: publicationCounts, backgroundColor: barGradient, borderColor: 'rgba(13,148,136,1)', borderWidth: 1, borderRadius: 6 }]
                         },
                         options: {
                             responsive: true,
-                            scales: {
-                                y: { beginAtZero: true, ticks: { stepSize: 1 } }
-                            },
-                            plugins: {
-                                legend: { display: false },
-                                tooltip: {
-                                    callbacks: {
-                                        label: ctx => `${ctx.raw} publication${ctx.raw > 1 ? 's' : ''}`
-                                    }
-                                }
-                            }
+                            scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
+                            plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `${c.raw} publication${c.raw > 1 ? 's' : ''}` } } }
                         }
                     });
-
-    
                 })
-                .catch(error => {
-                    console.error('Error loading publications:', error);
-                    document.getElementById('publications-container').innerHTML = '<p class="text-red-500">Error loading publications.</p>';
-                    document.getElementById('statistics-container').innerHTML = '<p class="text-red-500">Error loading statistics.</p>';
+                .catch(err => {
+                    console.error('Semantic Scholar error:', err);
+                    container.innerHTML = '<p class="text-red-500 text-sm">Gagal memuat publikasi dari Semantic Scholar. Coba refresh halaman.</p>';
                 });
         });
 
@@ -836,21 +832,6 @@
             backToTop.classList.toggle('visible', window.scrollY > 300);
         });
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Semantic Scholar impact metrics
-        // Author ID from profile URL: scholar.google user=zL10IUEAAAAJ
-        // Semantic Scholar lookup by name
-        fetch('https://api.semanticscholar.org/graph/v1/author/search?query=Teuku+Rizky+Noviandy&fields=name,citationCount,hIndex,paperCount')
-            .then(r => r.json())
-            .then(data => {
-                const author = data.data && data.data[0];
-                if (author) {
-                    document.getElementById('m-citations').textContent = author.citationCount ?? '—';
-                    document.getElementById('m-hindex').textContent = author.hIndex ?? '—';
-                    document.getElementById('m-papers').textContent = author.paperCount ?? '—';
-                }
-            })
-            .catch(() => {}); // silently fail if API unavailable
 
     </script>
    

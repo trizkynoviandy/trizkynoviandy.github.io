@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -155,7 +155,11 @@
             h2.text-3xl { font-size: 1.35rem !important; }
             h3.text-2xl { font-size: 1.1rem !important; }
             h1.text-2xl { font-size: 1.1rem !important; }
-            /* CV table font size on mobile */
+            /* About text */
+            #about p {
+                font-size: 0.875rem;
+                line-height: 1.6;
+            }
             #cv table td {
                 font-size: 0.85rem;
                 padding-top: 0.4rem;
@@ -250,7 +254,9 @@
             color: #2dd4bf !important;
         }
 
-        /* Fade-in on scroll */
+        .text-justify {
+            text-align: justify;
+        }
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -259,6 +265,32 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* CV stacked layout */
+        .cv-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+        }
+        .cv-year {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .cv-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        html.dark .cv-title { color: #f1f5f9; }
+        .cv-place {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        #publicationChart {
+            max-width: 100%;
         }
 
         /* Reading progress bar */
@@ -414,8 +446,8 @@
         <nav class="w-full px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold">Teuku Rizky Noviandy</h1>
         
-            <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none">
-                ☰ <!-- Simple Hamburger Icon -->
+            <button id="menu-toggle" class="md:hidden text-gray-900 focus:outline-none hidden">
+                ☰
             </button>
     
             <ul id="nav-menu" class="hidden md:flex space-x-4 ml-auto items-center">
@@ -434,40 +466,43 @@
     <div class="flex flex-col md:flex-row min-h-screen">
         <aside class="w-full md:w-1/4 bg-white shadow-md p-6 md:fixed md:h-full md:overflow-y-auto">
             <div class="text-center">
-                <img src="images/profile.jpg" alt="Profile Picture" loading="lazy" class="w-28 h-28 rounded-full shadow-lg mx-auto mb-3">
-                <h2 class="text-xl font-semibold mb-1">Teuku Rizky Noviandy</h2>
-                <p class="italic text-gray-600 text-sm pb-1">Lecturer in the Department of Information Systems, Universitas Abulyatama</p>
-                <p class="text-gray-600 text-sm mb-4">Aceh, Indonesia</p>
+                <img src="images/profile.jpg" alt="Profile Picture" loading="lazy" class="w-20 h-20 rounded-full shadow-lg mx-auto mb-2">
+                <h2 class="text-lg font-semibold mb-1">Teuku Rizky Noviandy</h2>
+                <p class="italic text-gray-600 pb-1" style="font-size:0.72rem;">Lecturer in the Department of Information Systems, Universitas Abulyatama</p>
+                <p class="text-gray-600 mb-3" style="font-size:0.72rem;">Aceh, Indonesia</p>
 
                 <hr class="border-gray-200 mb-3">
 
-                <div class="aside-links mt-2 space-y-1">
-                    <a href="mailto:rizky_si@abulyatama.ac.id" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" title="Email">
-                        <i class="fa-solid fa-envelope w-4 text-center"></i><span class="text-sm">Email</span>
+                <div class="aside-links mt-2" style="display: flex; flex-direction: column; gap: 0.1rem;">
+                    <a href="mailto:rizky_si@abulyatama.ac.id" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" title="Email" style="font-size:0.78rem;">
+                        <i class="fa-solid fa-envelope w-4 text-center text-xs"></i><span>Email</span>
                     </a>
-                    <a href="https://github.com/trizkynoviandy" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="GitHub">
-                        <i class="fa-brands fa-github w-4 text-center"></i><span class="text-sm">GitHub</span>
+                    <a href="https://github.com/trizkynoviandy" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="GitHub" style="font-size:0.78rem;">
+                        <i class="fa-brands fa-github w-4 text-center text-xs"></i><span>GitHub</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/teuku-rizky-noviandy-4b609a248/" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="LinkedIn">
-                        <i class="fa-brands fa-linkedin w-4 text-center"></i><span class="text-sm">LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/teuku-rizky-noviandy-4b609a248/" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="LinkedIn" style="font-size:0.78rem;">
+                        <i class="fa-brands fa-linkedin w-4 text-center text-xs"></i><span>LinkedIn</span>
                     </a>
-                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57215579311" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Scopus">
-                        <i class="fa-solid fa-book-open w-4 text-center"></i><span class="text-sm">Scopus</span>
+                    <a href="https://www.scopus.com/authid/detail.uri?authorId=57215579311" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Scopus" style="font-size:0.78rem;">
+                        <i class="fa-solid fa-book-open w-4 text-center text-xs"></i><span>Scopus</span>
                     </a>
-                    <a href="https://www.webofscience.com/wos/author/record/GQQ-6148-2022" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Web of Science">
-                        <i class="fa-solid fa-globe w-4 text-center"></i><span class="text-sm">Web of Science</span>
+                    <a href="https://www.webofscience.com/wos/author/record/GQQ-6148-2022" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Web of Science" style="font-size:0.78rem;">
+                        <i class="fa-solid fa-globe w-4 text-center text-xs"></i><span>Web of Science</span>
                     </a>
-                    <a href="https://orcid.org/0000-0002-5779-2235" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="ORCID">
-                        <i class="fa-brands fa-orcid w-4 text-center"></i><span class="text-sm">ORCID</span>
+                    <a href="https://orcid.org/0000-0002-5779-2235" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="ORCID" style="font-size:0.78rem;">
+                        <i class="fa-brands fa-orcid w-4 text-center text-xs"></i><span>ORCID</span>
                     </a>
-                    <a href="https://twitter.com/trizkynoviandy" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="X (Twitter)">
-                        <i class="fa-brands fa-x-twitter w-4 text-center"></i><span class="text-sm">X (Twitter)</span>
+                    <a href="https://twitter.com/trizkynoviandy" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="X (Twitter)" style="font-size:0.78rem;">
+                        <i class="fa-brands fa-x-twitter w-4 text-center text-xs"></i><span>X (Twitter)</span>
                     </a>
-                    <a href="https://www.researchgate.net/profile/Teuku-Rizky-Noviandy" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="ResearchGate">
-                        <i class="fa-brands fa-researchgate w-4 text-center"></i><span class="text-sm">ResearchGate</span>
+                    <a href="https://www.researchgate.net/profile/Teuku-Rizky-Noviandy" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="ResearchGate" style="font-size:0.78rem;">
+                        <i class="fa-brands fa-researchgate w-4 text-center text-xs"></i><span>ResearchGate</span>
                     </a>
-                    <a href="https://scholar.google.com/citations?user=zL10IUEAAAAJ&hl=en" class="social-icon flex items-center gap-2 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Google Scholar">
-                        <i class="fa-brands fa-google w-4 text-center"></i><span class="text-sm">Google Scholar</span>
+                    <a href="https://scholar.google.com/citations?user=zL10IUEAAAAJ&hl=en" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="Google Scholar" style="font-size:0.78rem;">
+                        <i class="fa-brands fa-google w-4 text-center text-xs"></i><span>Google Scholar</span>
+                    </a>
+                    <a href="https://sinta.kemdikbud.go.id/authors/profile/6740631" class="social-icon flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-600 hover:bg-gray-100" target="_blank" title="SINTA" style="font-size:0.78rem;">
+                        <i class="fa-solid fa-id-badge w-4 text-center text-xs"></i><span>SINTA</span>
                     </a>
                 </div>
             </div>
@@ -486,37 +521,38 @@
             <section id="cv" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
                 <div class="container mx-auto">
                     <h2 class="text-3xl font-semibold mb-6">Curriculum Vitae</h2>
-                    <h3 class="text-2xl font-semibold mb-4">Education</h3>
-                    <table class="w-full text-left mb-6 border-collapse">
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2022 – 2024</td>
-                                <td class="py-2 align-top"><strong>Master's in Artificial Intelligence</strong> — Universitas Syiah Kuala</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2014 – 2020</td>
-                                <td class="py-2 align-top"><strong>Bachelor's in Informatics</strong> — Universitas Syiah Kuala</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3 class="text-2xl font-semibold mb-3">Education</h3>
+                    <div class="cv-list mb-6">
+                        <div class="cv-item border-b py-3">
+                            <span class="cv-year">2022 – 2024</span>
+                            <span class="cv-title">Master's in Artificial Intelligence</span>
+                            <span class="cv-place">Universitas Syiah Kuala</span>
+                        </div>
+                        <div class="cv-item border-b py-3">
+                            <span class="cv-year">2014 – 2020</span>
+                            <span class="cv-title">Bachelor's in Informatics</span>
+                            <span class="cv-place">Universitas Syiah Kuala</span>
+                        </div>
+                    </div>
 
-                    <h3 class="text-2xl font-semibold mb-4">Work Experience</h3>
-                    <table class="w-full text-left border-collapse">
-                        <tbody>
-                            <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2024 – Present</td>
-                                <td class="py-2 align-top"><strong>Lecturer</strong> — Universitas Abulyatama</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2023 – Present</td>
-                                <td class="py-2 align-top"><strong>Associate Researcher</strong> — PT. Graha Primera Saintifika</td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-2 pr-4 font-semibold whitespace-nowrap align-top w-32" style="color: var(--accent);">2023 – Present</td>
-                                <td class="py-2 align-top"><strong>Managing Editor</strong> — PT. Heca Sentra Analitika</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3 class="text-2xl font-semibold mb-3">Work Experience</h3>
+                    <div class="cv-list">
+                        <div class="cv-item border-b py-3">
+                            <span class="cv-year">2024 – Present</span>
+                            <span class="cv-title">Lecturer</span>
+                            <span class="cv-place">Universitas Abulyatama</span>
+                        </div>
+                        <div class="cv-item border-b py-3">
+                            <span class="cv-year">2023 – Present</span>
+                            <span class="cv-title">Associate Researcher</span>
+                            <span class="cv-place">PT. Graha Primera Saintifika</span>
+                        </div>
+                        <div class="cv-item border-b py-3">
+                            <span class="cv-year">2023 – Present</span>
+                            <span class="cv-title">Managing Editor</span>
+                            <span class="cv-place">PT. Heca Sentra Analitika</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -565,10 +601,10 @@
                 </div>
             </section>
 
-            <section id="statistics" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box">
+            <section id="statistics" class="fade-in bg-white py-8 rounded-lg shadow-md mb-8 padded-box" style="overflow: hidden;">
                 <h2 class="text-3xl font-semibold mb-6">Publication Statistics</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                    <div>
+                    <div style="max-width: 100%; overflow: hidden;">
                         <p class="text-sm text-gray-500 text-center mb-2">Publications per Year</p>
                         <canvas id="publicationChart"></canvas>
                     </div>
@@ -634,14 +670,40 @@
                 }
             }
 
-            const savedTheme = localStorage.getItem('theme') ||
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            const savedTheme = localStorage.getItem('theme') || 'light';
             applyTheme(savedTheme);
 
             themeToggle.addEventListener('click', () => {
                 const newTheme = htmlEl.classList.contains('dark') ? 'light' : 'dark';
                 localStorage.setItem('theme', newTheme);
                 applyTheme(newTheme);
+            });
+
+            // Burger menu toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('flex');
+                navMenu.classList.toggle('flex-col');
+                navMenu.classList.toggle('absolute');
+                navMenu.classList.toggle('top-16');
+                navMenu.classList.toggle('left-0');
+                navMenu.classList.toggle('w-full');
+                navMenu.classList.toggle('bg-white');
+                navMenu.classList.toggle('shadow-md');
+                navMenu.classList.toggle('px-4');
+                navMenu.classList.toggle('py-3');
+                navMenu.classList.toggle('z-50');
+            });
+            // Close menu when a nav link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) {
+                        navMenu.classList.add('hidden');
+                        navMenu.classList.remove('flex','flex-col','absolute','top-16','left-0','w-full','bg-white','shadow-md','px-4','py-3','z-50');
+                    }
+                });
             });
 
             // Last updated timestamp (from latest commit on the repo)
@@ -742,7 +804,13 @@
 
                             grouped[year].forEach(pub => {
                                 const authors = Array.isArray(pub.authors)
-                                    ? pub.authors.map(a => a === 'Teuku Rizky Noviandy' ? `<strong>${a}</strong>` : a).join(', ')
+                                    ? pub.authors.map(a => {
+                                        const lower = a.toLowerCase();
+                                        if (lower.includes('noviandy') || lower.includes('teuku rizky')) {
+                                            return `<strong>${a}</strong>`;
+                                        }
+                                        return a;
+                                    }).join(', ')
                                     : 'Unknown Authors';
                                 const item = document.createElement('li');
                                 item.className = 'p-4 bg-gray-200 rounded-lg';
